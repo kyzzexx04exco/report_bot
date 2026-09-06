@@ -1,1 +1,1 @@
-# handlers package
+# bot package
