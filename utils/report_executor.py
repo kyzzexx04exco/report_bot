@@ -28,14 +28,13 @@ REASON_MAP: dict[str, object] = {
     "porn":          types.InputReportReasonPornography,
     "violence":      types.InputReportReasonViolence,
     "child_abuse":   types.InputReportReasonChildAbuse,
-    "harassment":    types.InputReportReasonHarassment,
+    "harassment":    types.InputReportReasonOther,
     "fake":          types.InputReportReasonFake,
     "copyright":     types.InputReportReasonCopyright,
-    "fraud":         types.InputReportReasonOther,      # Telegram belum punya reason spesifik
+    "fraud":         types.InputReportReasonOther,
     "personal_info": types.InputReportReasonOther,
     "other":         types.InputReportReasonOther,
 }
-
 # Opsi yang tidak butuh komentar (langsung eksekusi)
 NO_COMMENT_OPTIONS = {
     "spam",
