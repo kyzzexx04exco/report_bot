@@ -32,7 +32,9 @@ _API_HASH: str = ""
 
 
 def _build_proxy() -> Optional[dict]:
+    return None
     """Baca konfigurasi proxy dari env. Return None kalau tidak di-set."""
+    """
     host = os.getenv("PROXY_HOST", "").strip()
     if not host:
         return None
@@ -51,7 +53,7 @@ def _build_proxy() -> Optional[dict]:
         proxy["password"] = password
 
     logger.info(f"[PROXY] Menggunakan proxy {scheme}://{host}:{port}")
-    return proxy
+    return proxy"""
 
 
 def configure(api_id: int, api_hash: str) -> None:
