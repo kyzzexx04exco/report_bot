@@ -6,6 +6,10 @@ Bug "Client is already terminated" terjadi karena:
 - create_temp_client tanpa workdir → pyrogram coba buat file .session di cwd
 - Kalau cwd read-only atau ada file bentrok, pyrogram crash saat connect/disconnect
 - Fix: pakai workdir="/tmp" + in_memory=True di semua client
+
+Proxy:
+- Dikonfigurasi via .env: PROXY_SCHEME, PROXY_HOST, PROXY_PORT
+- Kalau PROXY_HOST tidak di-set, proxy dinonaktifkan
 """
 
 import logging
@@ -24,6 +28,16 @@ logger = logging.getLogger(__name__)
 _clients: dict[str, Client] = {}
 _API_ID: int = 0
 _API_HASH: str = ""
+
+
+def _build_proxy() -> Optional[dict]:
+    host = os.getenv("PROXY_HOST", "").strip()
+    if not host:
+        return None
+    scheme = os.getenv("PROXY_SCHEME", "mtproto").strip().lower()
+    port   = int(os.getenv("PROXY_PORT", "443"))
+    logger.info(f"[PROXY] Menggunakan proxy {scheme}://{host}:{port}")
+    return {"scheme": scheme, "hostname": host, "port": port}
 
 
 def configure(api_id: int, api_hash: str) -> None:
@@ -46,6 +60,7 @@ def create_client_from_session(phone_number: str, session_string: str) -> Client
         in_memory=True,
         no_updates=True,
         workdir="/tmp",
+        proxy=_build_proxy(),
     )
 
 
@@ -68,12 +83,13 @@ def create_temp_client(phone_number: str) -> Client:
         in_memory=True,
         no_updates=True,
         workdir="/tmp",
+        proxy=_build_proxy(),
     )
 
 
 async def load_all_sessions(senders: list[dict]) -> None:
     """Load semua sender aktif dari DB ke pool saat startup."""
-    from database import db  # import di sini hindari circular
+    from database import db
     for sender in senders:
         phone = sender["phone_number"]
         session = sender.get("session_string", "")
