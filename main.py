@@ -12,6 +12,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
+from utils.parsers import parse_channel_link, parse_message_link
 from dotenv import load_dotenv
 
 load_dotenv()
