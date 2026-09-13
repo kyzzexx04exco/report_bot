@@ -97,7 +97,7 @@ def create_temp_client(phone_number: str) -> Client:
         api_id=_API_ID,
         api_hash=_API_HASH,
         in_memory=True,
-        no_updates=True,
+        no_updates=False,
         workdir="/tmp",
         proxy=_build_proxy(),
     )
