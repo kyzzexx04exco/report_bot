@@ -74,7 +74,7 @@ def create_client_from_session(phone_number: str, session_string: str) -> Client
         api_hash=_API_HASH,
         session_string=session_string,
         in_memory=True,
-        no_updates=True,
+        no_updates=False,
         workdir="/tmp",
         proxy=_build_proxy(),
     )
