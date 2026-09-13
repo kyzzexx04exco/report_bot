@@ -41,8 +41,8 @@ OWNER_ID  = int(_require_env("OWNER_ID"))
 
 from database import db
 from utils import pyro_client
-from bot.handlers import start, sender, report, reportv2, reportbot, reportpriv, warmup, settings, reactchan
-
+# from bot.handlers import start, sender, report, reportv2, reportbot, reportpriv, warmup, settings, reactchan
+from bot.handlers import start, sender, report, reportv2, reportbot, notoscam, reportpriv, warmup, settings, reactchan
 
 async def on_startup(bot: Bot) -> None:
     logger.info("=" * 60)
