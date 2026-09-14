@@ -48,12 +48,12 @@ def _parse_notoscam_input(text: str) -> str | None:
     if len(parts) < 2:
         return None
 
-    deskripsi = parts[1].strip()
+    report_text = parts[1].strip()
 
-    if not deskripsi:
+    if not report_text:
         return None
 
-    return deskripsi
+    return report_text
     
 
 
@@ -75,14 +75,14 @@ async def cmd_notoscam(message: Message) -> None:
         )
         return
 
-    deskripsi = parsed
+    report_text = parsed
     # Format pesan yang dikirim ke @notoscam (sesuai cara manual)
     
 
     status = await message.answer(
         f"⏳ <b>Mengirim laporan ke @notoscam...</b>\n\n"
         f"🎯 Target: <code>Uknown</code>\n"
-        f"📝 Deskripsi: <i>{deskripsi}</i>",
+        f"📝 Deskripsi: <i>{report_text}</i>",
         parse_mode="HTML",
     )
 
