@@ -48,12 +48,12 @@ def _parse_notoscam_input(text: str) -> str | None:
     if len(parts) < 2:
         return None
 
-    report_text = parts[1].strip()
+    deskripsi = parts[1].strip()
 
-    if not report_text:
+    if not deskripsi:
         return None
 
-    return report_text
+    return deskripsi
     
 
 
@@ -67,7 +67,7 @@ async def cmd_notoscam(message: Message) -> None:
     if not parsed:
         await message.answer(
             "❌ Format salah.\n\n"
-            "Gunakan: <code>/notoscam @target deskripsi masalah</code>\n\n"
+            "Gunakan: <code>/notoscam deskripsi masalah</code>\n\n"
             "Contoh:\n"
             "<code>/notoscam @scammer123 This account is impersonating "
             "official crypto exchange and scamming users</code>",
@@ -75,13 +75,13 @@ async def cmd_notoscam(message: Message) -> None:
         )
         return
 
-    report_text = parsed
+    deskripsi = parsed
     # Format pesan yang dikirim ke @notoscam (sesuai cara manual)
     
 
     status = await message.answer(
         f"⏳ <b>Mengirim laporan ke @notoscam...</b>\n\n"
-        f"🎯 Target: <code>{mention}</code>\n"
+        f"🎯 Target: <code>Uknown</code>\n"
         f"📝 Deskripsi: <i>{deskripsi}</i>",
         parse_mode="HTML",
     )
@@ -141,7 +141,7 @@ async def cmd_notoscam(message: Message) -> None:
         result_text += f"🚫 Diblok: <b>{len(blocked)}</b> sender\n"
 
     result_text += (
-        f"🎯 Target: <code>{mention}</code>\n"
+        f"🎯 Target: <code>Uknown</code>\n"
         f"📝 Pesan: <i>{report_text}</i>"
     )
 
