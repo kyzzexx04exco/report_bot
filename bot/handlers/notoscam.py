@@ -44,18 +44,17 @@ def _parse_notoscam_input(text: str) -> str | None:
     Return (target_mention, deskripsi) atau None jika invalid.
     """
     parts = text.split(maxsplit=1)
-    if len(parts) > 2:
-       return None
 
-  #  raw_target = parts[1].strip()
-    deskripsi = parts[1].strip()
+    if len(parts) < 2:
+        return None
 
-    # Normalisasi target ke @username
-   
-   if not deskripsi:
-      return None
+    report_text = parts[1].strip()
 
-    return deskripsi
+    if not report_text:
+        return None
+
+    return report_text
+    
 
 
 @router.message(Command("notoscam"))
