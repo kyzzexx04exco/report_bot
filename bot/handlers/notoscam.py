@@ -75,9 +75,9 @@ async def cmd_notoscam(message: Message) -> None:
         )
         return
 
-    mention, deskripsi = parsed
+    report_text = parsed
     # Format pesan yang dikirim ke @notoscam (sesuai cara manual)
-    report_text = f"{mention} {deskripsi}"
+    
 
     status = await message.answer(
         f"⏳ <b>Mengirim laporan ke @notoscam...</b>\n\n"
