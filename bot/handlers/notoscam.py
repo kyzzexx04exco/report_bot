@@ -51,13 +51,7 @@ def _parse_notoscam_input(text: str) -> str | None:
     deskripsi = parts[1].strip()
 
     # Normalisasi target ke @username
-   """ if raw_target.startswith("@"):
-        mention = raw_target
-    elif "t.me/" in raw_target.lower():
-        m = re.search(r"t(?:elegram)?\.me/([A-Za-z0-9_]{3,})", raw_target, re.IGNORECASE)
-        mention = f"@{m.group(1)}" if m else raw_target
-    else:
-        mention = f"@{raw_target}""""
+   
    if not deskripsi:
       return None
 
