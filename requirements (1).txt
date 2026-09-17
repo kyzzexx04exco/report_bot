@@ -1,0 +1,16 @@
+aiogram==3.13.1
+# PENTING: Pyrogram 2.0.106 (PyPI resmi) sudah DISCONTINUE sejak April 2023,
+# terkunci di Layer 158. messages.Report di Layer 158 masih pakai schema
+# LAMA (reason:ReportReason → Bool), BUKAN schema baru Layer 189+
+# (option:bytes → ReportResult iteratif).
+#
+# Gunakan pyrofork — fork aktif Pyrogram yang support Layer 224+,
+# termasuk schema baru messages.report + ReportResult flow.
+# TgCrypto diganti tgcrypto-pyrofork (kompatibel).
+#
+# Install: pip install pyrofork tgcrypto-pyrofork motor python-dotenv pymongo
+pyrofork
+tgcrypto-pyrofork
+motor==3.3.2
+python-dotenv==1.0.1
+pymongo==4.6.3
